@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="da8c15b0-f572-4ae0-9cb1-bcead3e3818b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/context/Context.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/context/ScenarioContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/context/TestContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/pages/StudentSearch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/runners/CukesRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/runners/CukesRunner2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/runners/FailedTestRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/step_definitions/Hooks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/step_definitions/Steps.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/utilities/BrowserUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/utilities/ConfigFileReader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/utilities/Driver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/sample/utilities/Waits.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/configuration.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/features/demo.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/features/demo2.feature" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/sample/runners/CukesRunner.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/sample/runners/CukesRunner2.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/sample/runners/FailedTestRunner.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/sample/step_definitions/Steps.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/sample/utilities/ConfigFileReader.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/sample/utilities/Waits.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/resources/features/demo.feature" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/resources/features/demo2.feature" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/testng.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JEBytPaRXAG5IlLFUXl3yvMIZH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/1021285/Downloads/CucumberSamples-main/CucumberSamples-main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\1021285\OneDrive - Blue Yonder\Personal\JavaProjects\GuruPayment_BDD_New\src\test\resources\features" />
+      <recent name="C:\Users\1021285\OneDrive - Blue Yonder\Personal\JavaProjects\GuruPayment_BDD_New\src\main\java" />
+      <recent name="C:\Users\1021285\OneDrive - Blue Yonder\Personal\JavaProjects\GuruPayment_BDD_New\src\test\resources" />
+      <recent name="C:\Users\1021285\OneDrive - Blue Yonder\Personal\JavaProjects\GuruPayment_BDD_New\src\test\java" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\1021285\OneDrive - Blue Yonder\Personal\JavaProjects\GuruPayment_BDD_New\src\test" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sample.runners" />
+      <recent name="pages" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Cucumber Java.Scenario: Test the demo2">
+    <configuration name="Scenario: Test the demo2" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/features/demo2.feature" />
+      <option name="GLUE" value="com.sample.step_definitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="GuruPayment_BDD_New" />
+      <option name="NAME_FILTER" value="^Test the demo2$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Test the demo2$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Test the demo2" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CukesRunner (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GuruPayment_BDD_New" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sample.runners.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sample.runners" />
+      <option name="MAIN_CLASS_NAME" value="com.sample.runners.CukesRunner" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CukesRunner and 1 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GuruPayment_BDD_New" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="com.sample.runners.CukesRunner" />
+        <pattern testClass="com.sample.runners.CukesRunner2" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CukesRunner2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GuruPayment_BDD_New" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.sample.runners.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.sample.runners" />
+      <option name="MAIN_CLASS_NAME" value="com.sample.runners.CukesRunner2" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="C:/Users/1021285/OneDrive - Blue Yonder/Personal/JavaProjects/GuruPayment_BDD_New/testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="GuruPayment_BDD_New" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Cucumber Java.Scenario: Test the demo2" />
+        <item itemvalue="TestNG.C:/Users/1021285/OneDrive - Blue Yonder/Personal/JavaProjects/GuruPayment_BDD_New/testng.xml" />
+        <item itemvalue="JUnit.CukesRunner and 1 more" />
+        <item itemvalue="JUnit.CukesRunner (1)" />
+        <item itemvalue="JUnit.CukesRunner2" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da8c15b0-f572-4ae0-9cb1-bcead3e3818b" name="Changes" comment="" />
+      <created>1671633621773</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1671633621773</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
