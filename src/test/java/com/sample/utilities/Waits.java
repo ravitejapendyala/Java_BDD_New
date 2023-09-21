@@ -1,5 +1,6 @@
 package com.sample.utilities;
 
+import org.apache.poi.openxml4j.exceptions.InvalidOperationException;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -9,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class Waits {
 
@@ -163,5 +165,43 @@ public class Waits {
                 continue;
             }
         }
+    }
+
+//    static void waitForPageLoad(WebDriver Driver.getDriver()) {
+//        Predicate<WebDriver> pageLoaded = new Predicate<WebDriver>() {
+//
+//            @Override
+//            public boolean apply(WebDriver input) {
+//                return ((JavascriptExecutor) input).executeScript("return document.readyState").equals("complete");
+//            }
+//
+//        };
+//        wait.until(pageLoaded);
+//    }
+
+//    public static void WaitUntilDocumentIsReady( WebDriver driver, int timeoutInSeconds) {
+//        JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
+//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(120));
+//
+//        try {
+//            Func<WebDriver, bool> readyCondition = webDriver => (bool)jse.executeScript("return (document.readyState == 'complete' && jQuery.active == 0)");
+//            wait.Until(readyCondition);
+//        } catch(InvalidOperationException) {
+//            wait.Until(wd => jse.executeScript("return document.readyState").ToString() == "complete");
+//        }
+//    }
+
+    public void waitForPageLoad(WebDriver driver, int timeout) {
+
+        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
+
+            public Boolean apply(WebDriver driver) {
+
+                return ((JavascriptExecutor)driver).executeScript("return document.readyState").equals("complete");}
+
+        };
+        wait.until(pageLoadCondition);
+
     }
 }

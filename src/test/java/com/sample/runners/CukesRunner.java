@@ -9,15 +9,17 @@ import org.testng.annotations.DataProvider;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
+//            plugin = {
+//                    "html:target/cucumber-report.html",
+//                    "json:target/cucumber.json",
+//                    "rerun:target/rerun.txt"
+//            },
         plugin = {
-                "html:target/cucumber-report.html",
-                "json:target/cucumber.json",
-                "rerun:target/rerun.txt"
-        },
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" } ,
         features = "src/test/resources/features",
         glue = "com/sample/step_definitions",
         dryRun = false,
-        tags = "@test2"
+        tags = "@orange"
 )
 
 public class CukesRunner{

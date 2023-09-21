@@ -1,16 +1,32 @@
 package com.sample.step_definitions;
 
+import com.sample.utilities.BrowserUtils;
 import com.sample.utilities.Driver;
+import com.sample.utilities.Waits;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Steps {
+
+    BrowserUtils browserutils = new BrowserUtils();
+    Waits waits = new Waits();
+    String dob;
+    String[] parts;
+    int DateToUpdate;
+    int UpdatedDate;
+    public Steps(){
+        dob="";
+        DateToUpdate=0;
+        UpdatedDate=0;
+    }
 
     @Given("I launch payment gateway")
     public void i_launch_payment_gateway() {
@@ -71,5 +87,105 @@ public class Steps {
         WebElement month_drdn = Driver.getDriver().findElement(By.xpath(xpath));
         Select month_drdn_element = new Select(month_drdn);
         month_drdn_element.selectByVisibleText(value);
+    }
+
+    @Given("I automate orange app")
+    public void iAutomateOrangeApp() {
+
+        browserutils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        browserutils.type(Driver.getDriver().findElement(By.name("username")),"Admin");
+        browserutils.type(Driver.getDriver().findElement(By.name("password")),"admin123");
+
+        Waits.waitFixedTime(3);
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
+        Waits.waitFixedTime(3);
+        browserutils.VerifyElementExists("//h6[text()='Dashboard']");
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//span[text()='My Info']")));
+        //Waits.waitFixedTime(3);
+        waits.waitForPageLoad(Driver.getDriver(),120);
+
+        String dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
+        int counter=5;
+        do{
+
+            if(dob.isEmpty()|| dob.isBlank()){
+                Waits.waitFixedTime(2);
+                dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
+            }
+            counter--;
+        }while(dob==""&&counter>1);
+        Assert.assertTrue("Verify Date of birth is not blank",dob.contains("-"));
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("(//i[@class='oxd-icon bi-calendar oxd-date-input-icon'])[2]")));
+        Waits.waitFixedTime(2);
+        String[] parts = dob.split("-");
+        int DateToUpdate = Integer.parseInt(parts[2])+1;
+        if(DateToUpdate>29){DateToUpdate--;}
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-calendar-date'])["+(DateToUpdate-1)+"]")));
+        //Waits.waitFixedTime(3);
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
+        Waits.waitFixedTime(2);
+        dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
+        parts = dob.split("-");
+        int UpdatedDate = Integer.parseInt(parts[2]);
+        Assert.assertTrue("Verify Updated date is reflected :",UpdatedDate== DateToUpdate);
+    }
+
+    @Given("I login to Orange HRM app")
+    public void iLoginToOrangeHRMApp() {
+        browserutils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        browserutils.type(Driver.getDriver().findElement(By.name("username")),"Admin");
+        browserutils.type(Driver.getDriver().findElement(By.name("password")),"admin123");
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
+        //Waits.waitFixedTime(3);
+
+    }
+
+    @Then("Dashboard should be launched by default")
+    public void dashboardShouldBeLaunchedByDefault() {
+        browserutils.VerifyElementExists("//h6[text()='Dashboard']");
+    }
+
+    @When("I navigate to My Info section")
+    public void iNavigateToMyInfoSection() {
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//span[text()='My Info']")));
+    }
+
+    @Then("Date of birth details should be displayed")
+    public void dateOfBirthDetailsShouldBeDisplayed() {
+        waits.waitForPageLoad(Driver.getDriver(),120);
+        dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
+        int counter=5;
+        do{
+
+            if(dob.isEmpty()|| dob.isBlank()){
+                Waits.waitFixedTime(2);
+                dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
+            }
+            counter--;
+        }while(dob==""&&counter>1);
+        Assert.assertTrue("Verify Date of birth is not blank",dob.contains("-"));
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("(//i[@class='oxd-icon bi-calendar oxd-date-input-icon'])[2]")));
+        Waits.waitFixedTime(2);
+        parts = dob.split("-");
+        DateToUpdate = Integer.parseInt(parts[2])+1;
+        if(DateToUpdate>29){DateToUpdate--;}
+    }
+
+    @When("I Update Date of birth details")
+    public void iUpdateDateOfBirthDetails() {
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-calendar-date'])["+(DateToUpdate-1)+"]")));
+        //Waits.waitFixedTime(3);
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
+
+    }
+
+    @Then("My Info page should be updated with latest selected date of birth")
+    public void myInfoPageShouldBeUpdatedWithLatestSelectedDateOfBirth() {
+        Waits.waitFixedTime(2);
+        dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
+        parts = dob.split("-");
+        int UpdatedDate = Integer.parseInt(parts[2]);
+        Assert.assertTrue("Verify Updated date is reflected :",UpdatedDate== DateToUpdate);
+
     }
 }

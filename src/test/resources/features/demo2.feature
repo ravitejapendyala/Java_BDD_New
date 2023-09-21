@@ -52,3 +52,15 @@ Scenario: Test the demo2
 Given I launch payment gateway
 Then I generate card details
 When I buy the toys by selecting quantity
+
+
+@orange
+Scenario: Orange Test
+#Given I automate orange app
+Given I login to Orange HRM app
+Then Dashboard should be launched by default
+When I navigate to My Info section
+Then Date of birth details should be displayed
+When I Update Date of birth details
+Then My Info page should be updated with latest selected date of birth
+
