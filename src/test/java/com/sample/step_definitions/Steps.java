@@ -1,5 +1,7 @@
 package com.sample.step_definitions;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.sample.context.TestContext;
 import com.sample.utilities.BrowserUtils;
 import com.sample.utilities.Driver;
 import com.sample.utilities.Waits;
@@ -12,20 +14,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Steps {
 
-    BrowserUtils browserutils = new BrowserUtils();
-    Waits waits = new Waits();
+//    BrowserUtils browserutils = new BrowserUtils();
+//    Waits waits = new Waits();
+    BrowserUtils browserutils;
+    Waits waits ;
     String dob;
     String[] parts;
     int DateToUpdate;
     int UpdatedDate;
-    public Steps(){
+    TestContext testContext;
+    //Hooks hooks;
+
+    public Steps(TestContext context){
         dob="";
         DateToUpdate=0;
         UpdatedDate=0;
+        browserutils = new BrowserUtils();
+        waits = new Waits();
+        this.testContext = context;
+        //hooks = new Hooks();
     }
 
     @Given("I launch payment gateway")
@@ -136,13 +146,18 @@ public class Steps {
         browserutils.type(Driver.getDriver().findElement(By.name("username")),"Admin");
         browserutils.type(Driver.getDriver().findElement(By.name("password")),"admin123");
         browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
+
         //Waits.waitFixedTime(3);
 
     }
 
     @Then("Dashboard should be launched by default")
     public void dashboardShouldBeLaunchedByDefault() {
-        browserutils.VerifyElementExists("//h6[text()='Dashboard']");
+        Assert.assertTrue("Validate Dashboard is displayed by default after login",browserutils.VerifyElementExists("//h6[text()='Dashboard']"));
+        Hooks.scenario.log("Success: Validate Dashboard is displayed by default after login");
+//        Hooks.scenario.log(Status.PASSED, MarkupHelper.createLabel("Assertion Pass:", ExtentColor.GREEN));
+
+
     }
 
     @When("I navigate to My Info section")
@@ -152,7 +167,9 @@ public class Steps {
 
     @Then("Date of birth details should be displayed")
     public void dateOfBirthDetailsShouldBeDisplayed() {
+
         waits.waitForPageLoad(Driver.getDriver(),120);
+        Waits.waitForVisibility(By.xpath("//label[text()='Date of Birth']"),20);
         dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
         int counter=5;
         do{
@@ -169,13 +186,19 @@ public class Steps {
         parts = dob.split("-");
         DateToUpdate = Integer.parseInt(parts[2])+1;
         if(DateToUpdate>29){DateToUpdate--;}
+
     }
 
     @When("I Update Date of birth details")
     public void iUpdateDateOfBirthDetails() {
         browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-calendar-date'])["+(DateToUpdate-1)+"]")));
+        Hooks.takeScraenshot(Hooks.scenario);
         //Waits.waitFixedTime(3);
+        Waits.waitForVisibility(By.xpath("//button[@type='submit']"),20);
         browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
+        Hooks.takeScraenshot(Hooks.scenario);
+
+
 
     }
 
@@ -186,6 +209,23 @@ public class Steps {
         parts = dob.split("-");
         int UpdatedDate = Integer.parseInt(parts[2]);
         Assert.assertTrue("Verify Updated date is reflected :",UpdatedDate== DateToUpdate);
+        Hooks.scenario.log("Success: Date of Birth updated");
 
+    }
+
+    @When("I logout from the app")
+    public void iLogoutFromTheApp() {
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//i[contains(@class,'userdropdown-icon')]")));
+        Waits.waitForVisibility(By.xpath("//a[text()='Logout']"),20);
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//a[text()='Logout']")));
+
+
+
+    }
+
+    @Then("Login page should be displayed")
+    public void loginPageShouldBeDisplayed() {
+        Assert.assertTrue("Validate login page is displayed after logout ",browserutils.VerifyElementExists("//input[@name='username']"));
+        Hooks.scenario.log("Success: Login page displayed after Logout operation");
     }
 }

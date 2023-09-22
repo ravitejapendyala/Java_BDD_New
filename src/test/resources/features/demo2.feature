@@ -63,4 +63,6 @@ When I navigate to My Info section
 Then Date of birth details should be displayed
 When I Update Date of birth details
 Then My Info page should be updated with latest selected date of birth
+  When I logout from the app
+  Then Login page should be displayed
 
