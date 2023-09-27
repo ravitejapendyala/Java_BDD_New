@@ -587,5 +587,36 @@ public class BrowserUtils {
 
     }
 
+    private static void closeMultipleTabsExceptCurrentTab() throws InterruptedException {
+        // Get all open tabs
+        Set<String> allTabs = Driver.getDriver().getWindowHandles();
+
+        // Get Current tab
+        String currentTab = Driver.getDriver().getWindowHandle();
+
+        Iterator<String> iterator = allTabs.iterator();
+
+        while(iterator.hasNext()) {
+            // Condition to check if the selected tab is not current tab
+            String selectedTab = iterator.next();
+            if(!selectedTab.equals(currentTab)) {
+                // Switch to new tab
+                Driver.getDriver().switchTo().window(selectedTab);
+
+                // Print title of tabs to be closed
+                System.out.println("Closing Tab = "+Driver.getDriver().getTitle());
+
+                // Close the selected tab
+                Driver.getDriver().close();
+
+                // Time delay
+                Waits.waitFixedTime(1);
+            }
+            else{
+                Driver.getDriver().switchTo().window(selectedTab);
+            }
+        }
+    }
+
 
 }
