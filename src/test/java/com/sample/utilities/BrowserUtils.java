@@ -4,14 +4,14 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.NoSuchElementException;
-import java.util.Random;
+import java.util.function.Function;
 
 import static org.junit.Assert.assertTrue;
 
@@ -361,5 +361,231 @@ public class BrowserUtils {
     public static  void ClickBack(){
         Driver.getDriver().navigate().back();
     }
+
+
+    // New Methods from WebUtilities class
+    public static void scrollElementIntoView(final WebDriver driver, WebElement element, boolean top) {
+        if (element != null) {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            String topView = "";
+            if (top) {
+                topView = "true";
+            }
+            try {
+                jse.executeScript("arguments[0].scrollIntoView(" + topView + ")", element);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
+    /**
+     * This method locates an element
+     *
+     * @param driver
+     * @param locator
+     * @param timeoutSeconds
+     * @return
+     * @throws CustomException
+     */
+
+
+    public static WebElement findElement(final WebDriver driver, final By locator, final int timeoutSeconds, String click)  {
+
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).
+                withTimeout(Duration.ofSeconds(timeoutSeconds / 5)).withMessage("Not able to locate element WEB_element " + locator).
+                pollingEvery(Duration.ofMillis(500)).ignoring(NoSuchElementException.class);
+
+        WebElement element = null;
+        for (int retries = 5; retries > 0; retries--) {
+            try {
+                if (click.equals("click")) {
+                    element = wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(locator)));
+                    highLightElement(driver, element);
+                    element.click();
+                } else {
+                    element = wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfElementLocated(locator)));
+                    highLightElement(driver, element);
+                }
+                break;
+            } catch (Exception e) {
+            }
+        }
+
+        return element;
+
+    }
+
+    //Method Overloading
+    public static WebElement findElement(final WebDriver driver, final By locator, final int timeoutSeconds){
+
+        return findElement(driver, locator, timeoutSeconds, "find");
+    }
+
+
+    /**
+     * @param driver
+     * @param locator
+     * @param timeoutSeconds
+     * @return
+     * @throws CustomException
+     */
+
+    public static List<WebElement> findElements(WebDriver driver, By locator, final int timeoutSeconds) throws CustomException {
+
+        FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeoutSeconds)).withMessage("Not able to locate element " + locator).pollingEvery(Duration.ofMillis(500)).ignoring(NoSuchElementException.class);
+
+        WebElement element = wait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver webDriver) {
+                return driver.findElement(locator);
+            }
+
+        });
+        if (element.isDisplayed()) {
+            List<WebElement> elementsList = (List<WebElement>) driver.findElements(locator);
+            return elementsList;
+        }
+        throw new CustomException("Elements " + locator + " is not visible");
+
+    }
+
+    /**
+     * @param driver
+     * @param locator
+     * @return
+     */
+    public static boolean isElementPresent(final WebDriver driver, By locator) {
+        try {
+            driver.findElement(locator);
+            System.out.println("LOG : " + locator.toString() + " PRESENT");
+            return true;
+        } catch (Exception ex) {
+            System.out.println("LOG : " + locator.toString() + " NOT PRESENT");
+            //ex.printStackTrace();
+            return false;
+        }
+    }
+
+
+    public static void switchToChildWindow(WebDriver webDriver, int index) {
+        webDriver.switchTo().window(new ArrayList<String>(webDriver.getWindowHandles()).get(index));
+    }
+
+    public static void scrollDown(WebDriver webDriver) {
+        JavascriptExecutor js = (JavascriptExecutor) webDriver;
+        js.executeScript("window.scrollBy(0,3750)", "");
+    }
+
+
+    public static boolean isElementVisible(WebDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.ignoring(NoSuchElementException.class);
+        wait.pollingEvery(Duration.ofMillis(500));
+
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+            System.out.println("LOG : " + locator.toString() + "  VISIBLE");
+        } catch (Exception e) {
+            System.out.println("LOG : " + locator.toString() + " NOT VISIBLE");
+            return false;
+
+        }
+        return true;
+    }
+
+    public static boolean isElementNotVisible(WebDriver driver, By locator) {
+        // WebUtilities.ExplicitWait(3000);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(120));
+        wait.ignoring(NoSuchElementException.class);
+        wait.pollingEvery(Duration.ofMillis(500));
+
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+            System.out.println("LOG : " + locator.toString() + "Element is Not Visible : Expected");
+        } catch (Exception e) {
+            System.out.println("LOG : " + locator.toString() + " Element is VISIBLE: Not Expected");
+            return false;
+
+        }
+        return true;
+    }
+
+    public static void highLightElement(WebDriver driver, WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        String style = element.getAttribute("style");
+
+        js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 3px solid red;');", element);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+
+            System.out.println(e.getMessage());
+        }
+        js.executeScript("arguments[0].setAttribute('style',arguments[1]);", element, style);
+
+    }
+
+    static String parent_tab;
+    static WebDriver webDriver;
+
+    public static void switchToChildWindow(WebDriver driver) {
+        webDriver = driver;
+        parent_tab = webDriver.getWindowHandle();
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(120));
+        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        Set<String> s1 = webDriver.getWindowHandles();
+        Iterator<String> i1 = s1.iterator();
+        while (i1.hasNext()) {
+            String child_tab = i1.next();
+            if (!parent_tab.equalsIgnoreCase(child_tab)) {
+                webDriver.switchTo().window(child_tab);
+            }
+        }
+    }
+
+    public static List<WebElement> findElements(WebDriver webDriver, By locator) {
+        List<WebElement> elements = webDriver.findElements(locator);
+        return elements;
+    }
+
+    public static void switchToParentTab() {
+        webDriver.close();
+        webDriver.switchTo().window(parent_tab);
+    }
+
+    public static void openNewEmtpyTab(WebDriver driver) {
+        webDriver = driver;
+        parent_tab = webDriver.getWindowHandle();
+        driver.switchTo().newWindow(WindowType.TAB);
+    }
+
+    public static String getCurrentWindow(WebDriver driver) {
+        return driver.getWindowHandle();
+    }
+
+    public static void switchToWindow(String window, WebDriver driver) {
+        driver.switchTo().window(window);
+    }
+
+    public static void quitDriver(WebDriver driver) {
+        webDriver.quit();
+    }
+
+    public void CloseAddIfExists() {
+        if (!Driver.getDriver().findElements(By.xpath("//span[contains(text(),'CONTINUE SHOPPING')]")).isEmpty()) {
+            try {
+                clickWithJS(Driver.getDriver().findElement(By.xpath("")));
+            } catch (Exception ex) {
+                System.out.println("Into Exception clause ... Continue Shopping  add  doesn't exist");
+            }
+
+        } else {
+            System.out.println("Continue Shopping  add  doesn't exist");
+        }
+
+    }
+
 
 }
