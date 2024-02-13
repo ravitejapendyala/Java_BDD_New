@@ -1,0 +1,37 @@
+{
+  "McAfee+™ Ultimate - Family": {
+    "userName": "atlusmpufive@dispostable.com",
+    "password": "Testing12",
+    "Identity": {
+      "Transaction Monitoring": true,
+      "Identity Monitoring": true,
+      "Credit Monitoring": true,
+      "Identity theft support": true
+    },
+    "Privacy": {
+      "Personal Data Cleanup": true,
+      "Online Account Cleanup": true,
+      "Social privacy Manager": true,
+      "Check for your exposed data": true,
+      "risky accounts": false
+    }
+  },
+  "McAfee+™ Ultimate - Individual": {
+    "userName": "atlprdmpuienus05oct2023one@yopmail.com",
+    "password": "Testing12",
+    "Identity": {
+      "Transaction Monitoring": false,
+      "Identity Monitoring": false,
+      "Credit Monitoring": false,
+      "Identity theft support": true,
+      "Moniter your identity": false
+    },
+    "Privacy": {
+      "Personal Data Cleanup": true,
+      "Online Account Cleanup": true,
+      "Social privacy Manager": true,
+      "Check for your exposed data": true,
+      "risky accounts": true
+    }
+  }
+}

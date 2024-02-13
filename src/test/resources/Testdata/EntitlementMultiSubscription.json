@@ -1,0 +1,38 @@
+{
+  "Australia": {
+    "CreditCard": true,
+    "Bank": true,
+    "Email": true,
+    "UserName": true,
+    "userId": "atlauone@dispostable.com",
+    "password": "Testing12",
+    "TaxId": false,
+    "Passport": false,
+    "HealthID": false,
+    "NationalID": false
+  },
+  "Germany": {
+    "CreditCard": true,
+    "Bank": true,
+    "Email": true,
+    "UserName": true,
+    "TaxId": true,
+    "Passport": true,
+    "HealthID": true,
+    "NationalID": true,
+    "userId": "atldeone@dispostable.com",
+    "password": "Testing12"
+  },
+  "Japan": {
+    "CreditCard": true,
+    "Bank": true,
+    "Email": true,
+    "UserName": true,
+    "Passport": true,
+    "HealthID": true,
+    "TaxId": false,
+    "NationalID": false,
+    "userId": "atljpone@dispostable.com",
+    "password": "Testing12"
+  }
+}

@@ -184,7 +184,7 @@ public class Steps {
         browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("(//i[@class='oxd-icon bi-calendar oxd-date-input-icon'])[2]")));
         Waits.waitFixedTime(2);
         parts = dob.split("-");
-        DateToUpdate = Integer.parseInt(parts[2])+1;
+        DateToUpdate = Integer.parseInt(parts[1])+1;
         if(DateToUpdate>29){DateToUpdate--;}
 
     }
@@ -207,7 +207,7 @@ public class Steps {
         Waits.waitFixedTime(2);
         dob = BrowserUtils.getAttribute(Driver.getDriver().findElement(By.xpath("(//div[@class='oxd-date-input']/input)[2]")),"value");
         parts = dob.split("-");
-        int UpdatedDate = Integer.parseInt(parts[2]);
+        int UpdatedDate = Integer.parseInt(parts[1]);
         Assert.assertTrue("Verify Updated date is reflected :",UpdatedDate== DateToUpdate);
         Hooks.scenario.log("Success: Date of Birth updated");
 
