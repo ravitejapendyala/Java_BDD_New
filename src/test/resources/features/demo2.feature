@@ -56,7 +56,6 @@ When I buy the toys by selecting quantity
 
 @orange
 Scenario: Orange Test
-#Given I automate orange app
 Given I login to Orange HRM app
 Then Dashboard should be launched by default
 When I navigate to My Info section
