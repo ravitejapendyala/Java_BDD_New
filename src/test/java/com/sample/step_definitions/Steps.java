@@ -198,8 +198,6 @@ public class Steps {
         browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
         Hooks.takeScraenshot(Hooks.scenario);
 
-
-
     }
 
     @Then("My Info page should be updated with latest selected date of birth")
