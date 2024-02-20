@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -193,7 +194,7 @@ public class Waits {
 
     public void waitForPageLoad(WebDriver driver, int timeout) {
 
-        WebDriverWait wait = new WebDriverWait(driver, timeout);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
         ExpectedCondition<Boolean> pageLoadCondition = new ExpectedCondition<Boolean>() {
 
             public Boolean apply(WebDriver driver) {

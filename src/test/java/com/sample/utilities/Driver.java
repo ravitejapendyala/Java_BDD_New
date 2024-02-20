@@ -41,7 +41,7 @@ public class Driver {
          */
                 switch (browserType) {
                     case "chrome":
-                        WebDriverManager.chromedriver().setup();
+                        //WebDriverManager.chromedriver().setup();
                         ChromeOptions options = new ChromeOptions();
                         options.addArguments("--remote-allow-origins=*");
                         driverPool.set(new ChromeDriver(options));
@@ -49,7 +49,7 @@ public class Driver {
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
                         break;
                     case "firefox":
-                        WebDriverManager.firefoxdriver().setup();
+                        //WebDriverManager.firefoxdriver().setup();
                         driverPool.set(new FirefoxDriver());
                         driverPool.get().manage().window().maximize();
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
