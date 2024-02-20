@@ -19,39 +19,13 @@
 #@tag
 Feature: Verify demo2
   I want to verify demo2
-
-  #@tag1
-  #Scenario: Title of your scenario
-    #Given I want to write a step with precondition
-    #And some other precondition
-    #When I complete action
-    #And some other action
-    #And yet another action
-    #Then I validate the outcomes
-    #And check more outcomes
-
-  #@tag2
-  #Scenario Outline: Title of your scenario outline
-    #Given I want to write a step with <name>
-    #When I check for the <value> in step
-    #Then I verify the <status> in step
 #
-    #Examples: 
-      #| name  | value | status  |
-      #| name1 |     5 | success |
-      #| name2 |     7 | Fail    |
-      
-#@demorun
-#Scenario: Test the flipkart login
-#Given I launch Flipkart url
-#Then I login with "scharan43@gmail.com" and password "Selenium"
-#When I login into Flipkart
-@paymentGateway
-@test2
-Scenario: Test the demo2
-Given I launch payment gateway
-Then I generate card details
-When I buy the toys by selecting quantity
+#@paymentGateway
+#@test2
+#Scenario: Test the demo2
+#Given I launch payment gateway
+#Then I generate card details
+#When I buy the toys by selecting quantity
 
 
 @orange

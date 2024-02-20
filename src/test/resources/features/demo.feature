@@ -17,8 +17,8 @@
 ## (Comments)
 #Sample Feature Definition Template
 #@tag
-Feature: Verify Flipkart application
-  I want to use this template for my feature file
+#Feature: Verify Flipkart application
+#  I want to use this template for my feature file
 
   #@tag1
   #Scenario: Title of your scenario
@@ -46,9 +46,10 @@ Feature: Verify Flipkart application
 #Given I launch Flipkart url
 #Then I login with "scharan43@gmail.com" and password "Selenium"
 #When I login into Flipkart
-@paymentGateway
-@test2
-Scenario: Test the flipkart login
-Given I launch payment gateway
-Then I generate card details
-When I buy the toys by selecting quantity
+
+#@paymentGateway
+#@test2
+#Scenario: Test the flipkart login
+#Given I launch payment gateway
+#Then I generate card details
+#When I buy the toys by selecting quantity
