@@ -44,6 +44,9 @@ public class Driver {
                         //WebDriverManager.chromedriver().setup();
                         ChromeOptions options = new ChromeOptions();
                         options.addArguments("--remote-allow-origins=*");
+                        options.addArguments("--headless");
+                        options.addArguments("start-maximized");
+                        options.addArguments("--window-size=1920,1080");
                         driverPool.set(new ChromeDriver(options));
                         driverPool.get().manage().window().maximize();
                         driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
