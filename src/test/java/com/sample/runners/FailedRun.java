@@ -3,7 +3,6 @@ package com.sample.runners;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
-import org.testng.annotations.DataProvider;
 //import org.testng.annotations.Test;
 
 
@@ -22,7 +21,7 @@ import org.testng.annotations.DataProvider;
         tags = "@orange"
 )
 
-public class CukesRunner{
+public class FailedRun {
 //
 ////        @Test
 ////        public  void Tests(){

@@ -226,4 +226,12 @@ public class Steps {
         Assert.assertTrue("Validate login page is displayed after logout ",browserutils.VerifyElementExists("//input[@name='username']"));
         Hooks.scenario.log("Success: Login page displayed after Logout operation");
     }
+
+    @Given("I login to Orange HRM app with invalid details")
+    public void iLoginToOrangeHRMAppWithInvalidDetails() {
+        browserutils.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+        browserutils.type(Driver.getDriver().findElement(By.name("username")),"Admin12");
+        browserutils.type(Driver.getDriver().findElement(By.name("password")),"admin123");
+        browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
+    }
 }

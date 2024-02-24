@@ -28,7 +28,7 @@ Feature: Verify demo2
 #When I buy the toys by selecting quantity
 
 
-@orange
+@orange1
 Scenario: Orange Test
 Given I login to Orange HRM app
 Then Dashboard should be launched by default
@@ -38,4 +38,9 @@ When I Update Date of birth details
 Then My Info page should be updated with latest selected date of birth
   When I logout from the app
   Then Login page should be displayed
+
+@orange
+Scenario: Orange Test failure demo
+Given I login to Orange HRM app with invalid details
+Then Dashboard should be launched by default
 
