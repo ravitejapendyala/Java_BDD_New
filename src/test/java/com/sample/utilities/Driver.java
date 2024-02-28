@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -94,9 +95,11 @@ public class Driver {
                             break;
                         case "firefox":
                             DesiredCapabilities firefoxcap = new DesiredCapabilities();
+                            FirefoxOptions firefoxOptions = new FirefoxOptions();
+                            firefoxOptions.addArguments("--remote-allow-origins=*");
                             firefoxcap.setBrowserName("Firefox");
                             try{
-                                driverPool.set(new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),firefoxcap));
+                                driverPool.set(new RemoteWebDriver(new URL("http://localhost:4445/wd/hub"),firefoxcap));
 
                             }catch (Exception e){
                                 e.printStackTrace();

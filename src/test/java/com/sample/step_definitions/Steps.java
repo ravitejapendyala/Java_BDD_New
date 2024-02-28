@@ -234,4 +234,11 @@ public class Steps {
         browserutils.type(Driver.getDriver().findElement(By.name("password")),"admin123");
         browserutils.clickWithJS(Driver.getDriver().findElement(By.xpath("//button[@type='submit']")));
     }
+
+    @Given("I launch google")
+    public void iLaunchGoogle() {
+
+        browserutils.navigateTo("https://www.google.com/");
+        Waits.waitFixedTime(5);
+    }
 }

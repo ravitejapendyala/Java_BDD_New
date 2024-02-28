@@ -44,3 +44,7 @@ Scenario: Orange Test failure demo
 Given I login to Orange HRM app with invalid details
 Then Dashboard should be launched by default
 
+@google
+  Scenario: Google test
+    Given I launch google
+

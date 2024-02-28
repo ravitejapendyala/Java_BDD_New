@@ -19,7 +19,7 @@ import org.testng.annotations.DataProvider;
         features = "src/test/resources/features",
         glue = "com/sample/step_definitions",
         dryRun = false,
-        tags = "@orange"
+        tags = "@google"
 )
 
 public class CukesRunner{
