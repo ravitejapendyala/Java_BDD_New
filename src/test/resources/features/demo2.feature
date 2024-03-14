@@ -48,3 +48,7 @@ Then Dashboard should be launched by default
   Scenario: Google test
     Given I launch google
 
+@demo
+  Scenario: Demo Automation
+    Given I do registration
+
