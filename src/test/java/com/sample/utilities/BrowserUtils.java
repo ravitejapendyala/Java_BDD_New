@@ -635,10 +635,11 @@ public class BrowserUtils {
             Waits.waitFixedTime(1);
         }
         Waits.waitFixedTime(1);
-        jsExecutor.executeScript(
+        textField.sendKeys(Keys.BACK_SPACE);
+        /*jsExecutor.executeScript(
                 "var value = arguments[0].value; arguments[0].value = value.substring(0, value.length - 1);",
                 textField
-        );// Adjust the duration as needed
+        );// Adjust the duration as needed*/
         Waits.waitFixedTime(1);
     }
 
