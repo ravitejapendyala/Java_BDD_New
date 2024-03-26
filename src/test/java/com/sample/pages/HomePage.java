@@ -40,8 +40,12 @@ public class HomePage {
     public By To_txt = By.xpath("//span[text()='To']/following-sibling::input");
     public By suggestion = By.xpath("//ul[@id='autoSuggest-list']/li/div");
     public By departure = By.xpath("//span[text()='Departure']/following-sibling::p");
+    public By travel_details = By.xpath("//span[contains(text(),'Travellers')]/following-sibling::p");
     public By departure_30day = By.xpath("(//div[@class='DayPicker-Day'])[30]");
     public By traveller_student = By.xpath("//label[@for='ST']/div");
+    public By traveller_done= By.xpath("//a[text()='Done']");
+    public By searchFlight_btn = By.xpath("//span[text()='SEARCH FLIGHTS']");
+    public By loader_btn = By.xpath("//div[@class='loader']");
 
     String advanced_btn = "//button[@id='details-button']";
 
@@ -78,19 +82,19 @@ public class HomePage {
         }
 
     }
-    public void EnterFromCity(){
+    public void EnterFromCity(String from){
         Driver.getDriver().findElement(destination_btn).click();
         Waits.waitFixedTime(1);
-        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),From_txt,"HYD");
+        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),From_txt,from);
 
         //Driver.getDriver().findElement(From_txt).sendKeys("HYD");
         Waits.waitFixedTime(2);
         BrowserUtils.findElement(Driver.getDriver(),suggestion,5,"click");
     }
-    public void EnterToCity(){
+    public void EnterToCity(String to){
         //Driver.getDriver().findElement(destination_btn).click();
         Waits.waitFixedTime(1);
-        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),To_txt,"MAA");
+        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),To_txt,to);
         //Driver.getDriver().findElement(To_txt).sendKeys("MAA");
         Waits.waitFixedTime(2);
         BrowserUtils.findElement(Driver.getDriver(),suggestion,5,"click");
@@ -100,5 +104,18 @@ public class HomePage {
         BrowserUtils.findElement(Driver.getDriver(),departure,5,"click");
         Waits.waitFixedTime(2);
         BrowserUtils.clickWithJS(Driver.getDriver().findElement(departure_30day));
+    }
+    public void SelectTraveller() {
+        BrowserUtils.clickWithJS(Driver.getDriver().findElement(travel_details));
+        //BrowserUtils.findElement(Driver.getDriver(),travel_details,5,"click");
+        Waits.waitFixedTime(2);
+        BrowserUtils.findElement(Driver.getDriver(),traveller_done,5,"click");
+
+    }
+    public void SearchFlights() throws Exception {
+        BrowserUtils.findElement(Driver.getDriver(),searchFlight_btn,5,"click");
+        Waits.waitFixedTime(2);
+        Waits.waitForElementToDisappear(loader_btn,20);
+
     }
 }

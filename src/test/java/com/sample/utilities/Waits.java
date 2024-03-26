@@ -158,6 +158,10 @@ public class Waits {
             }
         }
     }
+    public static void waitForElementToDisappear(By locator, int timeout) throws Exception {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
     public static void waitForElementsText(WebElement element, String textToBe){
         for(int i = 0; i < 3; i++){
             if(element.isDisplayed() && element.getText().equals(textToBe)){

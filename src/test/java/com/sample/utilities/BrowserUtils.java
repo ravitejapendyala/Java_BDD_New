@@ -633,7 +633,7 @@ public class BrowserUtils {
             //((JavascriptExecutor) driver).executeScript("arguments[0].value += arguments[1]", inputElement, charToString);
             jsExecutor.executeScript("arguments[0].value += arguments[1]", textField,charToString);
             // Sleep for a small duration to mimic human typing speed
-            Waits.waitFixedTime(1);
+            //Waits.waitFixedTime(1);
         }
         Waits.waitFixedTime(1);
         textField.sendKeys(Keys.BACK_SPACE);

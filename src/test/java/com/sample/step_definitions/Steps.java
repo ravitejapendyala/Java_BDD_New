@@ -7,6 +7,7 @@ import com.sample.pages.HomePage;
 import com.sample.utilities.BrowserUtils;
 import com.sample.utilities.Driver;
 import com.sample.utilities.Waits;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -314,11 +315,25 @@ public class Steps {
     }
 
     @Given("I launch goibibo")
-    public void iLaunchGoibibo() {
+    public void iLaunchGoibibo()  {
         Driver.getDriver().get("https://goibibo.com/");
         homePage.CloseLoginPopup();
-        homePage.EnterFromCity();
-        homePage.EnterToCity();
+    }
+
+    @When("I Enter from {string} and to {string} details")
+    public void iEnterFromAndToDetails(String from, String to) {
+        homePage.EnterFromCity(from);
+        homePage.EnterToCity(to);
+    }
+
+    @And("I Enter traveller details")
+    public void iEnterTravellerDetails() {
         homePage.SetDepartureDate();
+        homePage.SelectTraveller();
+    }
+
+    @Then("Verify search results")
+    public void verifySearchResults() throws Exception {
+        homePage.SearchFlights();
     }
 }
