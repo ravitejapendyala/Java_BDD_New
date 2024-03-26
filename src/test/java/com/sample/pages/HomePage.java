@@ -77,18 +77,18 @@ public class HomePage {
     }
     public void EnterFromCity(){
         Driver.getDriver().findElement(destination_btn).click();
-        Waits.waitFixedTime(3);
-        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),From_txt,"Hyderabad");
+        Waits.waitFixedTime(1);
+        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),From_txt,"HYD");
         //Driver.getDriver().findElement(From_txt).sendKeys("HYD");
-        Waits.waitFixedTime(3);
+        Waits.waitFixedTime(2);
         BrowserUtils.findElement(Driver.getDriver(),suggestion,5,"click");
     }
     public void EnterToCity(){
         //Driver.getDriver().findElement(destination_btn).click();
-        Waits.waitFixedTime(3);
-        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),To_txt,"Chennai");
+        Waits.waitFixedTime(1);
+        BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),To_txt,"MAA");
         //Driver.getDriver().findElement(To_txt).sendKeys("MAA");
-        Waits.waitFixedTime(3);
+        Waits.waitFixedTime(2);
         BrowserUtils.findElement(Driver.getDriver(),suggestion,5,"click");
     }
 }
