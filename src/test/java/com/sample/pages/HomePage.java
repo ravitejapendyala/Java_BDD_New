@@ -39,6 +39,9 @@ public class HomePage {
     public By From_txt = By.xpath("//span[text()='From']/following-sibling::input");
     public By To_txt = By.xpath("//span[text()='To']/following-sibling::input");
     public By suggestion = By.xpath("//ul[@id='autoSuggest-list']/li/div");
+    public By departure = By.xpath("//span[text()='Departure']/following-sibling::p");
+    public By departure_30day = By.xpath("(//div[@class='DayPicker-Day'])[30]");
+    public By traveller_student = By.xpath("//label[@for='ST']/div");
 
     String advanced_btn = "//button[@id='details-button']";
 
@@ -79,6 +82,7 @@ public class HomePage {
         Driver.getDriver().findElement(destination_btn).click();
         Waits.waitFixedTime(1);
         BrowserUtils.enterTextCharacterByCharacterUsingJavaScript(Driver.getDriver(),From_txt,"HYD");
+
         //Driver.getDriver().findElement(From_txt).sendKeys("HYD");
         Waits.waitFixedTime(2);
         BrowserUtils.findElement(Driver.getDriver(),suggestion,5,"click");
@@ -90,5 +94,11 @@ public class HomePage {
         //Driver.getDriver().findElement(To_txt).sendKeys("MAA");
         Waits.waitFixedTime(2);
         BrowserUtils.findElement(Driver.getDriver(),suggestion,5,"click");
+    }
+
+    public void SetDepartureDate() {
+        BrowserUtils.findElement(Driver.getDriver(),departure,5,"click");
+        Waits.waitFixedTime(2);
+        BrowserUtils.clickWithJS(Driver.getDriver().findElement(departure_30day));
     }
 }

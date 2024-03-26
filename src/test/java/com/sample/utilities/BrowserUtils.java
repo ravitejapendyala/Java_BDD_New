@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
 import java.util.NoSuchElementException;
@@ -643,5 +644,17 @@ public class BrowserUtils {
         Waits.waitFixedTime(1);
     }
 
+    public String getFutureDate(){
+        Calendar calendar = Calendar.getInstance();
+        // Add one month
+        calendar.add(Calendar.MONTH, 1);
+        // Get the date one month from now
+        Date futureDate = calendar.getTime();
+
+        // Format the date as "dd MMM''yy" (e.g., "26 Mar'24")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM''yy");
+        String formattedDate = dateFormat.format(futureDate);
+        return formattedDate;
+    }
 
 }

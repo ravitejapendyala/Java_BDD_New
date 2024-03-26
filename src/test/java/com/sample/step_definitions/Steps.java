@@ -319,5 +319,6 @@ public class Steps {
         homePage.CloseLoginPopup();
         homePage.EnterFromCity();
         homePage.EnterToCity();
+        homePage.SetDepartureDate();
     }
 }
