@@ -618,5 +618,29 @@ public class BrowserUtils {
         }
     }
 
+    public static void enterTextUsingJavaScript(WebDriver driver, By elementXpath, String text) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        WebElement textField = driver.findElement(elementXpath);
+        jsExecutor.executeScript("arguments[0].value='" + text + "'", textField);
+    }
+    public static void enterTextCharacterByCharacterUsingJavaScript(WebDriver driver, By elementXpath, String textToEnter) {
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        WebElement textField = driver.findElement(elementXpath);
+        for (int i = 0; i < textToEnter.length(); i++) {
+            char character = textToEnter.charAt(i);
+            String charToString = String.valueOf(character);
+            //((JavascriptExecutor) driver).executeScript("arguments[0].value += arguments[1]", inputElement, charToString);
+            jsExecutor.executeScript("arguments[0].value += arguments[1]", textField,charToString);
+            // Sleep for a small duration to mimic human typing speed
+            Waits.waitFixedTime(1);
+        }
+        Waits.waitFixedTime(1);
+        jsExecutor.executeScript(
+                "var value = arguments[0].value; arguments[0].value = value.substring(0, value.length - 1);",
+                textField
+        );// Adjust the duration as needed
+        Waits.waitFixedTime(1);
+    }
+
 
 }

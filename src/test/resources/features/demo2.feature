@@ -52,3 +52,7 @@ Then Dashboard should be launched by default
   Scenario: Demo Automation
     Given I do registration
 
+@goibibo
+  Scenario: Verify sorting in goibibo
+    Given I launch goibibo
+

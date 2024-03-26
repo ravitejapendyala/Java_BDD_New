@@ -3,6 +3,7 @@ package com.sample.step_definitions;
 import com.aventstack.extentreports.ExtentTest;
 import com.github.javafaker.Faker;
 import com.sample.context.TestContext;
+import com.sample.pages.HomePage;
 import com.sample.utilities.BrowserUtils;
 import com.sample.utilities.Driver;
 import com.sample.utilities.Waits;
@@ -27,6 +28,8 @@ public class Steps {
     int DateToUpdate;
     int UpdatedDate;
     TestContext testContext;
+
+    HomePage homePage;
     //Hooks hooks;
 
     public Steps(TestContext context){
@@ -36,6 +39,7 @@ public class Steps {
         browserutils = new BrowserUtils();
         waits = new Waits();
         this.testContext = context;
+        homePage = new HomePage();
         //hooks = new Hooks();
     }
 
@@ -297,13 +301,23 @@ public class Steps {
         WebElement firstpassword = Driver.getDriver().findElement(By.id("firstpassword"));
         WebElement secondpassword = Driver.getDriver().findElement(By.id("secondpassword"));
         gender.click();
+        String emailId = faker.internet().emailAddress();
         tel.sendKeys("9977885544");
-
+        firstpassword.sendKeys(emailId);
+        secondpassword.sendKeys(emailId);
         // After filling out the form, you can submit it
         WebElement submitButton = Driver.getDriver().findElement(By.id("submitbtn"));
 
 
-        email.sendKeys(faker.internet().emailAddress());
+        email.sendKeys(emailId);
         submitButton.click();
+    }
+
+    @Given("I launch goibibo")
+    public void iLaunchGoibibo() {
+        Driver.getDriver().get("https://goibibo.com/");
+        homePage.CloseLoginPopup();
+        homePage.EnterFromCity();
+        homePage.EnterToCity();
     }
 }
